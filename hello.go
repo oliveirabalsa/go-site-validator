@@ -6,20 +6,21 @@ import "net/http"
 
 func main() {
 	showIntroduction()
-	showMenu()
+	for {
+		showMenu()
+		command := readCommand()
 
-	command := readCommand()
-
-	switch command {
-	case 1:
-		initmonitoring()
-	case 2:
-		fmt.Println("Exibindo Logs...")
-	case 0:
-		fmt.Println("Saindo do Programa...")
-	default:
-		fmt.Println("Comando não encontrado")
-		os.Exit(-1)
+		switch command {
+		case 1:
+			initmonitoring()
+		case 2:
+			fmt.Println("Showing Logs...")
+		case 0:
+			fmt.Println("Exiting the program...")
+			os.Exit(-1)
+		default:
+			fmt.Println("Command not found")
+		}
 	}
 }
 
@@ -31,9 +32,9 @@ func showIntroduction() {
 	fmt.Println("Esta é a versão", version)
 }
 func showMenu() {
-	fmt.Println("1- Iniciar Monitoramento")
-	fmt.Println("2- Exibir Logs")
-	fmt.Println("0- Sair do Programa")
+	fmt.Println("1- Init monitoring")
+	fmt.Println("2- Show logs")
+	fmt.Println("0- Exit")
 }
 
 func readCommand() int {
@@ -46,14 +47,14 @@ func readCommand() int {
 }
 
 func initmonitoring() {
-	fmt.Println("Monitorando...")
+	fmt.Println("Monitoring...")
 	site := "https://google.com.br"
 	response, _ := http.Get(site)
 
 	if response.StatusCode == 200 {
-		fmt.Println("O Site", site, "foi carregado com sucesso!")
+		fmt.Println("The website", site, "was successfully loaded!")
 	} else {
-		fmt.Println("O Site", site, "Falhou em seu carregamento!")
+		fmt.Println("The website", site, "loading failed!")
 	}
 	// fmt.Println(response)
 }
