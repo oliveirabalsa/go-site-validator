@@ -56,5 +56,4 @@ func initmonitoring() {
 	} else {
 		fmt.Println("The website", site, "loading failed!")
 	}
-	// fmt.Println(response)
 }
