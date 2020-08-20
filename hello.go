@@ -47,7 +47,7 @@ func readCommand() int {
 }
 
 func initmonitoring() {
-	fmt.Println("Monitoring...")
+	fmt.Println("Monitoring....")
 	site := "https://google.com.br"
 	response, _ := http.Get(site)
 
